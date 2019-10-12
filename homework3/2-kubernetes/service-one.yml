@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service1-dev
+spec:
+  selector:
+    matchLabels:
+      app: service1-dev
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: service1-dev
+    spec:
+      containers:
+        - name: service1-dev
+          image: http-server:1.0
+          env:
+            - name: NAME
+              value: 'Service1'
+          ports:
+            - containerPort: 8080
